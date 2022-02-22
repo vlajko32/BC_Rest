@@ -4,14 +4,16 @@ using BasketballClub_Rest.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BasketballClub_Rest.Migrations
 {
     [DbContext(typeof(BCContext))]
-    partial class BCContextModelSnapshot : ModelSnapshot
+    [Migration("20220209002752_Code-User")]
+    partial class CodeUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -203,6 +205,10 @@ namespace BasketballClub_Rest.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<string>("Discriminator")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
@@ -210,7 +216,6 @@ namespace BasketballClub_Rest.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Role")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Surname")
@@ -223,7 +228,7 @@ namespace BasketballClub_Rest.Migrations
 
                     b.ToTable("Users");
 
-                    b.HasDiscriminator<string>("Role").HasValue("User");
+                    b.HasDiscriminator<string>("Discriminator").HasValue("User");
                 });
 
             modelBuilder.Entity("BasketballClub_Rest.Domain.Administrator", b =>

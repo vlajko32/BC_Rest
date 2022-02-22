@@ -32,15 +32,19 @@ namespace BasketballClub_Rest.Repository.Repository_Impl
 
         public List<Training> GetAll()
         {
-            return context.Trainings.Include(s => s.Selection).Include(c => c.Coach).Include(g => g.Gym).ToList();
+            return context.Trainings.Include(g => g.Gym).ToList();
         }
 
-        public void Insert(Training item)
+        public Training Insert(Training item)
         {
-            context.Trainings.Add(item);
+            if(context.Trainings.Add(item)==null)
+            {
+                return null;
+            }
+            return item;
         }
 
-        public void Update(Training item, int id)
+        public Training Update(Training item, int id)
         {
             throw new NotImplementedException();
         }

@@ -1,6 +1,7 @@
 using BasketballClub_Rest.Domain;
 using BasketballClub_Rest.Repository.UnitOfWork;
 using BasketballClub_Rest.Services;
+using BasketballClubApi.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -74,6 +75,11 @@ namespace BasketballClub_Rest
 
                 ));
 
+            services.AddScoped<PlayerService>();
+            services.AddScoped<CoachService>();
+            services.AddScoped<GymService>();
+            services.AddScoped<TrainingService>();
+            services.AddScoped<SelectionService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

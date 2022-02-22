@@ -38,12 +38,17 @@ namespace BasketballClub_Rest.Repository.Repository_Impl
             throw new NotImplementedException();
         }
 
-        public void Insert(User item)
+        public List<Code> GetCodes()
+        {
+            return context.Codes.ToList();
+        }
+
+        public User Insert(User item)
         {
             throw new NotImplementedException();
         }
 
-        public void Update(User item, int id)
+        public User Update(User item, int id)
         {
             throw new NotImplementedException();
         }

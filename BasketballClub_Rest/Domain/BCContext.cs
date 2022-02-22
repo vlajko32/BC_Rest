@@ -23,7 +23,7 @@ namespace BasketballClub_Rest.Domain
 
         public DbSet<SelectionAge> SelectionAges { get; set; }
 
-        public DbSet<Administrator> Operators { get; set; }
+        public DbSet<Administrator> Administrators { get; set; }
 
         public DbSet<Code> Codes { get; set; }
 
@@ -35,7 +35,10 @@ namespace BasketballClub_Rest.Domain
         protected override void OnModelCreating(ModelBuilder builder)
         {
 
-            
+            builder.Entity<User>()
+            .HasDiscriminator(r => r.Role);
+           
+
 
             base.OnModelCreating(builder);
 

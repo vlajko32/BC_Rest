@@ -14,7 +14,7 @@ namespace BasketballClub_Rest.Controllers
 {
     [Route("api/coach")]
     [ApiController]
-    [Authorize(Roles = "Operator, Coach")]
+  //  [Authorize(Roles = "Operator, Coach")]
     public class CoachController : ControllerBase
     {
         private IUnitOfWork uow;
@@ -45,7 +45,7 @@ namespace BasketballClub_Rest.Controllers
         //    return Ok();
 
         //}
-        [Authorize(Roles = "Operator, Coach")]
+       // [Authorize(Roles = "Operator, Coach")]
 
         [HttpGet]
         public IActionResult GetAll()
@@ -53,7 +53,7 @@ namespace BasketballClub_Rest.Controllers
             List<Coach> coaches = uow.Coaches.GetAll();
             return Ok(coaches);
         }
-        [Authorize(Roles = "Operator, Coach")]
+       // [Authorize(Roles = "Operator, Coach")]
 
         [HttpGet("{id}")]
         public IActionResult GetById([FromRoute] int id)
@@ -62,7 +62,7 @@ namespace BasketballClub_Rest.Controllers
             return Ok(coach);
         }
 
-        [Authorize(Roles = "Operator")]
+       // [Authorize(Roles = "Operator")]
         [HttpGet("withoutSelection")]
         public IActionResult GetWithoutSelection()
         {
@@ -70,7 +70,7 @@ namespace BasketballClub_Rest.Controllers
             return Ok(coaches);
         }
 
-        [Authorize(Roles = "Operator")]
+      //  [Authorize(Roles = "Operator")]
         [HttpDelete("{id}")]
         public IActionResult Delete([FromRoute] int id)
         {
@@ -84,7 +84,7 @@ namespace BasketballClub_Rest.Controllers
             return Ok();
         }
 
-        [Authorize(Roles = "Operator")]
+      //  [Authorize(Roles = "Operator")]
 
         [HttpPut("{id}")]
         public IActionResult UpdateCoach([FromRoute] int id, [FromBody] CoachModel model)

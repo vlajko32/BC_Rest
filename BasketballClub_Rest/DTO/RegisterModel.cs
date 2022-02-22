@@ -28,6 +28,8 @@ namespace BasketballClub_Rest.DTO
 
         public int SelectionID { get; set; }
 
+        public string Code { get; set; }
+
 
     }
 }
